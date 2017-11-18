@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			
+			<table border="1" width="1000">
+				<tr>
+					<td>编号</td>
+					<td>名称</td>
+					<td>内容</td>
+				</tr>
+				<tr ng-repeat='(k,v) in data'>
+					<td>{{v.id}}</td>
+					<td>{{v.name}}</td>
+					<td>{{v.mobile|truncate:4}}</td>
+				</tr>
+			</table>
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.filter('truncate',function(){
+			return function(mobile,len){
+				len=len?len:3;
+				return mobile.substr(0,11-len)+new String('*').repeat(len);
+			}
+		})
+		m.controller('ctrl',['$scope','$filter',function($scope,$filter){
+			$scope.data=[
+			  {id:1,name:'啥的',mobile:'15222923935'},
+			  {id:2,name:'和i看',mobile:'15222923456'},
+			  {id:3,name:'说话',mobile:'15366678945'},
+			  {id:5,name:'大家看',mobile:'17628393491'},
+			  {id:4,name:'好ij',mobile:'12546783202'},
+			];
+			
+		}])
+	</script>
+</html>

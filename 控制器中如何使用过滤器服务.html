@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			{{data}}
+			<button ng-click='orderBy()'>过滤</button>
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.controller('ctrl',['$scope','$filter',function($scope,$filter){
+			$scope.data=[
+			  {id:1,name:'山东',title:'啤酒'},
+			  {id:2,name:'济南',title:'红豆'},
+			  {id:3,name:'海绵',title:'哈酒'},
+			  {id:5,name:'安虎',title:'按酒'},
+			  {id:4,name:'诸葛',title:'皮特'},
+			]
+			$scope.orderBy=function(){
+				$scope.data=$filter('orderBy')($scope.data,'id',true);
+			}
+		}])
+	</script>
+</html>

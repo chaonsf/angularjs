@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div ng-controller="ctrl">
+		<input type="text" name="" value="" ng-model="mingzi">
+		<input type="text" name="" value="" ng-model="mima">
+		<input type="button" name="" value="登录" ng-click="tap()">
+		</div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var mod=angular.module("app",[]);
+		mod.controller('ctrl',['$scope','$http',function($scope,$http){
+			$scope.tap=function(){
+				$http({
+					method:'get',
+					url:'act.php',
+					params:{user:$scope.mingzi,pass:$scope.mima}
+				}).success(function(data){
+					alert(data.msg)
+				}).error(function(data){
+					alert(data.msg)
+				})
+			}
+		}])
+	</script>
+</html>

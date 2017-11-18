@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+		<hd-cms></hd-cms>
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.directive('hdCms',[function(){
+			return{
+				restrict:'E',
+				templateUrl:"3.html",
+				controller:['$scope',function($scope){
+					$scope.data='前端微微';
+				}]
+				
+			}
+		}]);
+		
+	</script>
+</html>

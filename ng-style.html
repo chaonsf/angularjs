@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			颜色：<input type="text" ng-model='yanse'/>
+			大小：<input type="number" ng-model='size'/><br />
+			<span ng-style="{color:yanse,fontSize:size+'px'}">前端威武</span>
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.controller('ctrl',['$scope',function($scope){
+			
+			
+		}])
+	</script>
+</html>

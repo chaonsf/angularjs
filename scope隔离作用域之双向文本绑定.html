@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			<h1 hdcms hcolor='dau'></h1>
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.directive('hdcms',[function(){
+			return{
+				restrict:'AEC',//A attr  E element   C  class
+				template:"<span style='color:{{colo}}'>青春无敌</span>{{name}}",
+				scope:{colo:'=hcolor'}//=双向数据绑定
+			}
+		}]);
+		m.controller('ctrl',['$scope',function($scope){
+			$scope.dau='red';
+			
+		}])
+	</script>
+</html>

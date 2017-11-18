@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="ctrl">{{aa}}</div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var mod=angular.module('app',[]);
+		mod.service('videoserver',['$http',function($http){
+			this.get=function(){
+				return $http({method:'get',url:"act.php"}).then(function(res){
+					return res.data
+				})
+			}
+		}])
+		mod.controller('ctrl',['$scope','videoserver',function($scope,videoserver){
+			 videoserver.get().then(function(data){
+			 	$scope.data=data;
+			 })
+		}])
+	</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			{{user|filter:'深'}}
+			<hr />
+			{{user|filter:'深':true}}
+			<hr />
+			{{user|filter:'深圳':true}}
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.controller('ctrl',['$scope',function($scope){
+			$scope.user=[
+			  {name:'北京',url:'beijing'},
+			    {name:'上海',url:'shanghai'},
+			     {name:'深圳',url:'shenzhen'},
+			      {name:'深元',url:'shenzhen'},
+			]
+			
+			
+		}])
+	</script>
+</html>

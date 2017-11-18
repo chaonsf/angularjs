@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="ctrl">{{aa}}</div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var mod=angular.module('app',[]);
+		mod.factory('myserve',function(){
+			return {
+				name:'hello',
+				tap:function(){
+					return this.name+':angular'
+				},
+				vam:function(num1,num2){
+					return Math.random()*(num2-num1)+num1
+				}
+			}
+		})
+		mod.controller('ctrl',['$scope','myserve',function($scope,myserve){
+			  $scope.aa=myserve.vam(2,5)
+		}])
+	</script>
+</html>

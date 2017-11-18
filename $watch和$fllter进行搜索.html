@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			搜索：<input type="text" ng-model='search' />
+			<table border="1" width="1000">
+				<tr>
+					<td>编号</td>
+					<td>名称</td>
+					<td>内容</td>
+				</tr>
+				<tr ng-repeat='(k,v) in list'>
+					<td>{{v.id}}</td>
+					<td>{{v.name}}</td>
+					<td>{{v.title}}</td>
+				</tr>
+			</table>
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.controller('ctrl',['$scope','$filter',function($scope,$filter){
+			$scope.data=[
+			  {id:1,name:'100',title:'啤酒'},
+			  {id:2,name:'129',title:'红豆'},
+			  {id:3,name:'178',title:'哈酒'},
+			  {id:5,name:'562',title:'按酒'},
+			  {id:4,name:'13',title:'皮特'},
+			];
+			$scope.list=$scope.data//用临时数据进行筛选，不要直接操作原始数据
+			$scope.$watch('search',function(o,v){
+				$scope.list=$filter('filter')($scope.data,o)
+			})
+			
+		}])
+	</script>
+</html>

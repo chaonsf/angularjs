@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="ctrl">
+			<input type="text" name=""  ng-model="name" ng-keyup="tap()"/>
+			<ul>
+				<li ng-repeat="x in data">{{x}}</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var mod=angular.module("app",[]);
+		mod.controller('ctrl',['$scope','$http','$timeout',function($scope,$http,$timeout){
+			var timer=null;
+			$scope.data=[];
+			$scope.tap=function(){
+				$timeout.cancel(timer);/*执行完timeout服务之后执行的回调函数*/
+				timer=$timeout(function(){
+					$http({
+						method:'Jsonp',
+						url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+$scope.name+'&cb=JSON_CALLBACK'
+					}).success(function(data){
+						console.log(data);
+						$scope.data=data.s;
+					})
+				},500)
+			}
+		}])
+	</script>
+</html>

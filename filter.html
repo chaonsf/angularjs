@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			{{price|currency:'￥':1}}<br />
+			{{price|number:2}}<br />
+			{{data|limitTo:5}}<br />
+			{{data|limitTo:3:2}}
+			<hr />
+			{{time|date:'yyyy年MM月dd日 hh:mm:ss'}}
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.controller('ctrl',['$scope',function($scope){
+			$scope.price=1234.5678;
+			$scope.data="很抱歉你的过去我无法参与，但今天起你的未来我永远都会在。";
+			$scope.time=new Date().getTime();
+			
+		}])
+	</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="ap">
+		<c></c>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var app=angular.module("ap",[]);
+		app.directive("c",function(){
+			 return{
+			 	restrict:"E",
+			 	replace:true,
+			 	template:"<h1>今天是星期四</h1>"
+			 }
+		})
+	</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.controller('ctrl',['$scope',function($scope){
+			/*var obj={'name':'百度网'};
+			angular.extend(obj,{url:'baidu.com','web':'百度工程师'});
+			console.log(obj);*/
+			$scope.data=[{name:'百度网',url:'baidu.com'},{name:'百合网',url:'baihe.com'},{name:'淘宝网',url:'baobao.com'}];
+			angular.forEach($scope.data,function(u,v){
+				console.log(u);
+				console.log(v)
+			})
+		}])
+	</script>
+</html>

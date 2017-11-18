@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div ng-controller="ctrl"></div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var mod=angular.module('app',[]);
+		mod.controller('ctrl',['$scope','$log',function($scope,$log){
+			
+             $log.log("你好")
+             $log.info("你好")
+             $log.error("你好")
+             $log.warn("你好")
+		}])
+	</script>
+</html>

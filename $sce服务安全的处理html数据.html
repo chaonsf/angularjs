@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+		   {{data}}
+		   <hr />
+		   <div ng-bind-html='data'></div>
+		   <hr />
+		   <div ng-bind-html='title|trustAsHtml'></div>
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	
+	<script>
+		var m=angular.module('hd',[]);
+		m.filter('trustAsHtml',['$sce',function($sce){
+			return function(data){
+				return $sce.trustAsHtml(data)
+			}
+		}])
+		m.controller('ctrl',['$scope','$sce',function($scope,$sce){
+			$scope.data=$sce.trustAsHtml("<h1>nibdskkk</h1>")//我们可以对这个服务自定义过滤器,就不用每次都写$sce.trustAsHtml
+			$scope.title="<h3 style='color:red'>bfsuafjifajiijf</h3>"
+		}])
+	</script>
+</html>

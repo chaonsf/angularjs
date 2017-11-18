@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="ctrl">
+			{{name}}
+		</div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var mod=angular.module('app',[]);
+		mod.controller('ctrl',['$scope',function($scope){
+			 $scope.name="hello";
+			 setTimeout(function(){
+			 	$scope.$apply(function(){
+			 		$scope.name="hi"
+			 	})
+			 },3000)                    /*$apply传播model层的变化*/
+		}])
+	</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="aa">
+			<div>{{ha}}</div>
+		</div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		 var mo=angular.module("app",[]);
+		 mo.controller('aa',['$scope','$interval',function($scope,$interval){
+		 	$scope.ha=0;
+		 	$interval(function(){
+		 		$scope.ha+=1
+		 	},1000)
+		 }])
+	</script>
+</html>

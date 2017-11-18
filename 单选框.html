@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			网站开启：
+			<input type="radio" ng-model="status" value="1"/>开启
+			<input type="radio" ng-model="status" value="0"/>关闭
+			{{status}}
+			<div ng-show="status==0">
+				关闭原因：<textarea name="" cols="30" rows="10">
+					网络维护中，下午2：00开启
+				</textarea>
+			</div>
+		</div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.controller('ctrl',['$scope',function($scope){
+			$scope.status=1;
+		}])
+	</script>
+</html>

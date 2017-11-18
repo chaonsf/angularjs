@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller='ctrl'>
+			<div>价格:<input type="text" ng-model="ip.price"></div>
+			<div>数量:<input type="text" ng-model="ip.num"></div>
+			<div>费用：<span>{{sum()}}</span></div>
+			<div>运费:<span>{{ip.fre}}</span></div>
+			<div>总额:<span>{{sum()+io.fre}}</span></div>
+		</div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var mod=angular.module('app',[]);
+		mod.controller('ctrl',['$scope',function($scope){
+			$scope.ip={
+				price:5,
+				num:1,
+				fre:10
+			}
+			$scope.sum=function(){
+				return $scope.ip.price*$scope.ip.num
+			}
+			$scope.$watch($scope.sum,function(newval,oldval){      /*监视$scope.sum的变化。因为这个是费用大于等于100时免运费，传入的参数为新值，旧值俩个参数*/
+				$scope.ip.fre=newval>=100?0:10;
+			})
+		}])
+	</script>
+</html>

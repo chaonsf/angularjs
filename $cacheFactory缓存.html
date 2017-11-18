@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+		   {{data}}
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	
+	<script>
+		var m=angular.module('hd',[]);
+		
+		m.controller('ctrl',['$scope','$cacheFactory',function($scope,$cacheFactory){//类似于sessionstroge
+			var obj=$cacheFactory('hui');//创建表hui
+			obj.put('web',{name:'百度',url:'www.baidu.com'});
+			console.log(obj.get('web'));
+			//删除缓存,若是删除全部的话就用removeall（）括号里不需要参数，如果连hui这个表都删掉的话用destroy（）
+			//obj.remove('web');
+			$scope.data=obj.get('web').name;
+			
+			
+		}])
+		//注：如果其他控制器里想用刚才缓存创建的表的话，用var obj=$cacheFactory.get("hui")就可以
+	</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="js/angular1.min.js"></script>
+	<script src="js/jquery-2.2.3.min.js"></script>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+		<hd-cms title='超哥' bgcolor='green' fontcolor='red'></hd-cms>
+		</div>	
+	</body>
+	
+	<script>
+		var m=angular.module('hd',[]);
+		m.directive('hdCms',[function(){
+			return{
+				restrict:'E',
+				scope:{
+					title:'@'
+				},
+				link:function(scope,elem,attrs){
+					console.log(attrs);
+					$(elem).css({backgroundColor:attrs['bgcolor'],color:attrs['fontcolor']}).html(scope.title);//类似的dom操作要放在link里面
+				}
+			}
+		}]);
+		
+	</script>
+</html>

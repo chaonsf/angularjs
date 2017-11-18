@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			{{data.name}}
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.controller('ctrl',['$scope',function($scope){
+			$scope.data={'name':'百度网'}
+			localStorage.setItem('data',angular.toJson($scope.data));//把json对象转换成json字符串
+			
+		}])
+	</script>
+</html>

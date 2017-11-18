@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			<table border="1" width="1000">
+				<tr>
+					<td ng-click="orderBy('id')">编号</td>
+					<td ng-click="orderBy('name')">名称</td>
+					<td ng-click="orderBy('title')">内容</td>
+				</tr>
+				<tr ng-repeat='(k,v) in data'>
+					<td>{{v.id}}</td>
+					<td>{{v.name}}</td>
+					<td>{{v.title}}</td>
+				</tr>
+			</table>
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.controller('ctrl',['$scope','$filter',function($scope,$filter){
+			$scope.data=[
+			  {id:1,name:'100',title:'啤酒'},
+			  {id:2,name:'129',title:'红豆'},
+			  {id:3,name:'178',title:'哈酒'},
+			  {id:5,name:'562',title:'按酒'},
+			  {id:4,name:'13',title:'皮特'},
+			]
+			$scope.orderBy=function(field){
+				if(arguments.callee[field]==undefined){
+					arguments.callee[field]=false;
+				}
+				arguments.callee[field]=!arguments.callee[field];//记录上一次点击的状态。另一种方法是用一个变量记录点击的状态，和此方法差不多
+				$scope.data=$filter('orderBy')($scope.data,field,arguments.callee[field]);
+			}
+		}])
+	</script>
+</html>

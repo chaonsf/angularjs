@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+			<div hd-cms color='red'>你好阿</div>
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var m=angular.module('hd',[]);
+		m.directive('hdCms',[function(){
+			return{
+				restrict:'AEC',//A attr  E element   C  class
+				template:function(elem,attr){
+					return elem.html();
+				}
+			}
+		}])
+	</script>
+</html>

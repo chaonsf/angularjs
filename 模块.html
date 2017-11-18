@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="bt" ng-controller="mycontroller">{{ma}}</div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var myApp=angular.module("aa",[]);   /*第一步：先定义一个模块，把需要的服务注入进去*/
+		var element=angular.element(document.getElementById("bt"));
+		var aa=function($scope){              /*第二步：定义模块里面发生什么事，都是通过$scope来控制的*/
+			$scope.ma="hello,see you"
+		}
+		myApp.controller("mycontroller",aa);   /*第三步：通过控制器来调用模块*/
+		angular.bootstrap(element,['aa'])     /*第四步：把angular给跑起来*/
+	</script>
+</html>

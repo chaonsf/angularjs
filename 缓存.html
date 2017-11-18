@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div ng-controller="ctrl"></div>
+	</body>
+	<script src="js/angular1.min.js"></script>
+	<script>
+		var mod=angular.module('app',[]);
+		mod.controller('ctrl',['$scope','$cacheFactory',function($scope,$cacheFactory){
+			var cache=$cacheFactory('mydata');
+			cache.put('name','hello');
+			cache.put('age','11');
+			cache.put('job','66');
+			console.log(cache.get("name"))
+		}])
+	</script>
+</html>

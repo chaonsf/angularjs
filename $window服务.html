@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-app="hd" ng-controller="ctrl">
+		    <a href="" ng-click="get()">hahh</a>
+		    <hr />
+		    <a href="" ng-click='prompt()'>请输入内容</a>
+		    您输入的内容是：{{content}}
+		</div>	
+	</body>
+	<script src="js/angular1.min.js"></script>
+	
+	<script>
+		var m=angular.module('hd',[]);
+		
+		m.controller('ctrl',['$scope','$window',function($scope,$window){//原生的window的封装
+			$scope.get=function(){
+				$window.alert(3)
+			}
+			$scope.prompt=function(){
+				$scope.content=$window.prompt('请输入内容')
+			}
+		}])
+	</script>
+</html>
